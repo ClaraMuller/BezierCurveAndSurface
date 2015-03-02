@@ -112,7 +112,6 @@ EnvSDL::launch(Scene & sc)
 		}
 		SDL_SetRenderDrawColor(this->_ren, 0, 0, 0, 255);
 		SDL_RenderClear(this->_ren);
-		//sc.drawProjectionPts(*this);
 		sc.drawPts(*this);
 		sc.drawBezier2D(*this);
 		SDL_RenderPresent(this->_ren);

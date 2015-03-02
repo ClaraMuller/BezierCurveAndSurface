@@ -92,7 +92,7 @@ Scene::drawBezier2D(EnvSDL & env)
 	for (iterator = lst.begin(); iterator != lst.end(); ++iterator)
 	{
 		Point<double> p = *iterator;
-		env.drawSquare(p.getX() - 1, p.getY() - 1, 2, yellow);
+		env.drawSquare(p.getX(), p.getY(), 2, yellow);
 	}
 }
 

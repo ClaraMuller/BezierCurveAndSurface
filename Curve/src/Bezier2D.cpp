@@ -36,7 +36,6 @@ Bezier2D::casteljau(const std::vector<Point<double>> & v, float t)
 {
 	std::vector<Point<double>>	pts;
 	int				size = v.size();
-	Color				yellow(255, 222, 0);
 
 	if (size <= 1)
 	{
