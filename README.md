@@ -2,7 +2,7 @@
 
 Example of Bezier curves and surfaces approximation, using Casteljau's algorithm.
 
-#### How to try it ?
+##### How to try it ?
 
 Just clone the repo, compile with the Makefile and run it.
 
@@ -15,12 +15,16 @@ Try it with your own test file : (x, y , z)
 
 ### Curve
 
-SDL2 library has been use for the graphical interface.
+SDL2 library has been used for the graphical interface.
 
-### Surface Type 1
+### Surfaces
+
+OpenGl library has been used for the graphical interface. Learning the graphical library with the tutorial : http://www.opengl-tutorial.org/beginners-tutorials. OpenGl extension libraries GLEW, GLM and GLFW has been added to the project.
+
+##### Type 1
 
 Comming soon
 
-### Surface Type 2
+##### Type 2
 
 Comming soon
