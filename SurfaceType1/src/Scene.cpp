@@ -18,33 +18,6 @@ Scene::~Scene()
 /* METHODES */
 
 void
-Scene::setScalePts(void)
-{
-	int	size = this->_pts.size();
-	int	iter = this->_b2D.getIter();
-
-	std::cout << "min X: "  << this->_minx << std::endl;
-	std::cout << "min Y: "  << this->_miny << std::endl;
-	std::cout << "min Z: "  << this->_minz << std::endl;
-	std::cout << "max X: "  << this->_maxx << std::endl;
-	std::cout << "max Y: "  << this->_maxy << std::endl;
-	std::cout << "max Z: "  << this->_maxz << std::endl;
-
-	for (int i = 0; i < size; i++)
-	{
-		std::cout << "Entry: " << this->_pts[i] << std::endl;
-		double x = iter * this->_pts[i].getX() / this->_maxx;
-		double y = iter * this->_pts[i].getY() / this->_maxy;
-		double z = iter * this->_pts[i].getZ() / this->_maxz;
-		//double z = this->_pts[i].getZ();
-		this->_ptsScale.push_back(Point<double>(x, z, y));
-		std::cout << "new x: " << x << std::endl;
-		std::cout << "new y: " << y << std::endl;
-		std::cout << "new z: " << z << std::endl;
-	}
-}
-
-void
 Scene::setMinXYZ(void)
 {
 	if (this->_pts.size() == 0)
@@ -82,18 +55,6 @@ Scene::setMaxXYZ(void)
 	}
 }
 
-void
-Scene::setExtremeControlPoint(void)
-{
-	this->_pts.push_back(Point<double>(this->_minx - MARGE, this->_miny - MARGE, 0));
-
-	this->_pts.push_back(Point<double>(this->_minx - MARGE, this->_maxy + MARGE,0));
-
-	this->_pts.push_back(Point<double>(this->_maxx + MARGE, this->_miny - MARGE, 0));
-
-	this->_pts.push_back(Point<double>(this->_maxx + MARGE, this->_maxy + MARGE, 0));
-}
-
 bool
 Scene::setPts(const char *p)
 {
@@ -123,7 +84,9 @@ Scene::setPts(const char *p)
 			std::stringstream ss;
 			ss << content.substr(begin + 1, end - begin - 1);
 			ss >> x >> y >> z;
-			Point<double> p(x,y,z);
+			// In OpenGl 3D representation,
+			// height is in second position
+			Point<double> p(x,z,y);
 			this->_pts.push_back(p);
 			begin = -1;
 			end = -1;

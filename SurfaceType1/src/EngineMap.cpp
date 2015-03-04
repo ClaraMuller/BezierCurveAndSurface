@@ -13,31 +13,21 @@ Engine::setControlPoints(std::vector<Point<double> > & pts)
 {
 	std::cout << "Setting Control Point" << std::endl;
 
-	int							size;
-	int							iter = this->_b2D.getIter();
-	std::vector<Point<double> >	ctrl;
-
-	// x et z compris en 1 et iter
-	ctrl.push_back(Point<double>( 80,  150,   0));
-	ctrl.push_back(Point<double>( 50,    0, 50));
-	ctrl.push_back(Point<double>( 20,  150,  100));
-
-	(void)pts;
-//	ctrl = pts;
+	int	size = pts.size();
+	int	iter = this->_b2D.getIter();
 
 	this->_testPoints.push_back(Point<double>( iter, 0,        0));
 	this->_testPoints.push_back(Point<double>( iter, 0, iter / 2));
 	this->_testPoints.push_back(Point<double>( iter, 0,     iter));
 
-	/* ZE POINT(S) */
-
-	size = ctrl.size();
+	/* THE POINT(S) */
 
 	for (int i = 0; i < size; ++i)
 	{
-		double	x = ctrl[i].getX();
-		double	y = ctrl[i].getY();
-		double	z = ctrl[i].getZ();
+		std::cout << "- " << pts[i] << std::endl;
+		double	x = pts[i].getX();
+		double	y = pts[i].getY();
+		double	z = pts[i].getZ();
 
 		if (this->_drawingMode == SIMPLE)
 		{
@@ -76,11 +66,10 @@ Engine::setControlPoints(std::vector<Point<double> > & pts)
 void
 Engine::drawBezier2D(void)
 {
-	int								size;
-	std::vector<Point<double> >		tab;
-	std::vector<Point<double> >		tab2;
-	std::vector<Point<double> >		tab3;
-
+	int						size;
+	std::vector<Point<double> >			tab;
+	std::vector<Point<double> >			tab2;
+	std::vector<Point<double> >			tab3;
 	std::vector<std::vector<Point<double>> >	grid;
 
 	std::cout << "Drawing Bezier" << std::endl;
@@ -111,8 +100,8 @@ Engine::drawBezier2D(void)
 		std::cout << "map size : " << size << std::endl;
 		for (int i = 0; i < size; ++i)
 		{
-			std::vector<Point<double> >		t;
-			int								s;
+			std::vector<Point<double> >	t;
+			int				s;
 
 			this->_b2D.clearAprox();
 			this->_b2D.compute(this->_map[i]);
@@ -142,8 +131,8 @@ Engine::drawBezier2D(void)
 	std::cout << "tab  : " << tab_size << std::endl;
 	std::cout << "grid : " << grid_size << std::endl;
 
-	std::vector<glm::vec3>					tmp;
-	std::vector<Point<double> >				temp;
+	std::vector<glm::vec3>		tmp;
+	std::vector<Point<double> >	temp;
 
 	for (int i = 0; i < tab_size; ++i)
 	{
@@ -175,8 +164,8 @@ Engine::drawBezier2D(void)
 void
 Engine::setBorderMap(void)
 {
-	int 				iter = this->_b2D.getIter();
-	std::vector<glm::vec3>		tmp;
+	int 			iter = this->_b2D.getIter();
+	std::vector<glm::vec3>	tmp;
 
 	std::cout << "Drawing Border" << std::endl;
 	for(int i = -BORD + 1; i <= 0; ++i)
@@ -242,8 +231,8 @@ Engine::drawLand(std::vector<glm::vec3> & tmp, int sqZ, int sqX, float r, float 
 void
 Engine::drawLand(std::vector<glm::vec3> & tmp, int square)
 {
-	int		size = tmp.size();
-	int		iter = this->_b2D.getIter();
+	int	size = tmp.size();
+	int	iter = this->_b2D.getIter();
 	float	yMax = 0;
 
 	if (size < 1)
@@ -275,5 +264,4 @@ Engine::drawLand(std::vector<glm::vec3> & tmp, int square)
 		}
 	}
 }
-
 

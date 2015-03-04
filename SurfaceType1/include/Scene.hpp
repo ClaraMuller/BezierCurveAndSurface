@@ -20,7 +20,6 @@ private:
 public:
 
 	std::vector<Point<double>>	_pts;
-	std::vector<Point<double>>	_ptsScale;
 
 	enum
 	{
@@ -34,8 +33,6 @@ public:
 	bool	setPts(const char *path_file);
 	void	setMinXYZ(void);
 	void	setMaxXYZ(void);
-	void	setExtremeControlPoint(void);
-	void	setScalePts(void);
 
 	float	getMinX(void) const;
 	float	getMinY(void) const;

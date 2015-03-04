@@ -69,7 +69,7 @@ public:
 	Engine(void);
 	virtual ~Engine(void);
 
-	bool	init(int w = 1900, int h = 1200, int mode = SIMPLE);
+	bool	init(int mode, int w = 1900, int h = 1200);
 	void	launch(Scene & sc);
 
 	/* EngineMap.cpp */

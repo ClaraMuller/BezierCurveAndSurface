@@ -44,7 +44,7 @@ Engine::~Engine(void)
 }
 
 bool
-Engine::init(int w, int h, int mode)
+Engine::init(int mode, int w, int h)
 {
 	this->_w = w;
 	this->_h = h;
@@ -89,7 +89,7 @@ Engine::launch(Scene & sc)
 {
 	(void)sc;
 
-	setControlPoints(sc._ptsScale);
+	setControlPoints(sc._pts);
 	drawBezier2D();
 	setBorderMap();
 
