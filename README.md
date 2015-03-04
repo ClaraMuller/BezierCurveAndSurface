@@ -6,8 +6,7 @@ Example of Bezier curves and surfaces approximation, using Casteljau's algorithm
 
 Just clone the repo, compile with the Makefile and run it.
 
-Test file have to follow the correct syntax in order to be read by the programm. Rules ar the following :
-
+Test file have to follow the correct syntax in order to be read by the programm. Rules are the following:
 * one point is define by his x, y and z coordinates in this order
 * coordinates are separeted by a comma
 * one point has to be circled by parentheses to separate from the others
