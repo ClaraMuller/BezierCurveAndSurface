@@ -16,7 +16,8 @@ An example of file could be : *(x1, y1, z1) (x2, y2, z2) (x3, y3, z3)*
 ### Curve
 
 SDL2 library has been used for the graphical interface.
-
+Control points of the file are represented by red squares in the graphical interface and are linked by blue line between each others. Bezier curve approximation is represented by all the yellow squares.
+50 iterations are computing for the approximation.
 
 ### Surfaces
 
