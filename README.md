@@ -19,7 +19,7 @@ SDL2 library has been used for the graphical interface.
 
 ##### Caption
 
-* Control points of the file are represented by **red squares** in the graphical interface and are linked by **blue line between** each others.
+* Control points of the file are represented by **red squares** in the graphical interface and are linked by **blue line** between each others.
 * Bezier curve approximation is represented by all the **yellow squares**.
 
 50 iterations are computing for the approximation.
@@ -36,7 +36,7 @@ OpenGl extension libraries GLEW, GLM and GLFW has been added to the project.
 
 ##### Moves
 
-Rotations around x,y,z axis with the ritght button mouse and zoom with up and down arrow on the keybord.
+Rotations around x, y, z axis with the right button mouse and zoom with up and down arrow on the keybord.
 
 ##### Caption
 
