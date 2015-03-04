@@ -1,4 +1,4 @@
-## Bezier Curve and Surface
+# Bezier Curve and Surface
 
 Example of Bezier curves and surfaces approximation, using Casteljau's algorithm.
 
@@ -13,7 +13,7 @@ Test file have to follow the correct syntax in order to be read by the programm.
 
 An example of file could be : *(x1, y1, z1) (x2, y2, z2) (x3, y3, z3)*
 
-### Curve
+## Curve
 
 SDL2 library has been used for the graphical interface.
 
@@ -21,20 +21,21 @@ Control points of the file are represented by red squares in the graphical inter
 Bezier curve approximation is represented by all the yellow squares.
 50 iterations are computing for the approximation.
 
-### Surfaces
+## Surfaces
 
 
 
 OpenGl library has been used for the graphical interface. Learning the graphical library with the tutorials :
 * http://www.opengl-tutorial.org/beginners-tutorials.
 * http://guillaume.belz.free.fr/doku.php
+
 OpenGl extension libraries GLEW, GLM and GLFW has been added to the project.
 
-###### Moves
+##### Moves
 
 Rotations around x,y,z axis with the ritght button mouse and zoom with up and down arrow on the keybord.
 
-###### Caption
+##### Caption
 
 Height of the vertices is represented by different colors.
 * **green** : land with zero height
