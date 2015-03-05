@@ -34,11 +34,11 @@ OpenGl library has been used for the graphical interface. Learning the graphical
 
 OpenGl extension libraries GLEW, GLM and GLFW has been added to the project.
 
-##### Moves
+##### **Moves**
 
 Rotations around x, y, z axis with the right button mouse and zoom with up and down arrow on the keybord.
 
-##### Caption
+##### **Caption**
 
 Height of the vertices is represented by different colors.
 * **green** : land with zero height
@@ -51,10 +51,15 @@ Real and artificial points of contols are visible.
 * **violet / red** : artificial control points set at the extremity of the map.
 * **red** : new points computed with bezier approximaton. Approximation is computed between yellow, violet and red point. This new points are saved in order to compute the global surface in the next step.
 
-##### Type 1
+##### **Drawing Mode**
 
-Comming soon
+You can give the parameter "MULTI" after the control point file for trying a new drawing mode. By default, only one Bezier curve go through all the control points and this curve is used for computing the surface. If the "multi" option is choosen, a bezier curve will be approximated for each control point. It computes a different surface, mostly smoother but also with less reliefs.
 
-##### Type 2
+### Type 1
+Control points of the first type has to be between 0 entre the number of iterations of Bezier approximation (here we choose 100) because the map is define between 0 and the number of approximation too.
 
-Comming soon
+### Type 2
+
+For the second type, I tried to imitate more like a games tray than a real landscape. So I divided the map into squares, and for each square, check if a control point is inside it. If I found out one or several, I compute the surface like in the first surface type but with the square delimitation.
+
+
