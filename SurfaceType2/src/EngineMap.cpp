@@ -42,6 +42,7 @@ Engine::runThroughSquare(std::vector<Point<double> > & pts)
 				this->_testPoints.clear();
 				this->_testPoints2.clear();
 				this->_testPoints3.clear();
+				this->_map.clear();
 				this->_b2D.clearAprox();
 			}
 			else
@@ -57,8 +58,8 @@ Engine::setControlPoints(std::vector<Point<double> > & ctrl, int mx, int mz)
 {
 	std::cout << "Setting Control Point" << std::endl;
 
-	int		size;
-	int		iter = this->_b2D.getIter();
+	int	size;
+	int	iter = this->_b2D.getIter();
 
 	this->_testPoints.push_back(Point<double>( mx + iter, 0,            mz));
 	this->_testPoints.push_back(Point<double>( mx + iter, 0, mz + iter / 2));
@@ -87,13 +88,13 @@ Engine::setControlPoints(std::vector<Point<double> > & ctrl, int mx, int mz)
 		if (this->_drawingMode == MULTI)
 		{
 			std::vector< Point<double> >	lst;
-			lst.push_back(Point<double>( x, 0,    0));
-			lst.push_back(Point<double>( x, 0, z - LIM));
+			lst.push_back(Point<double>( x, 0,        mz));
+			lst.push_back(Point<double>( x, 0,   z - LIM));
 
-			lst.push_back(Point<double>( x, y,    z));
+			lst.push_back(Point<double>( x, y,         z));
 
-			lst.push_back(Point<double>( x, 0, z + LIM));
-			lst.push_back(Point<double>( x, 0, iter));
+			lst.push_back(Point<double>( x, 0,   z + LIM));
+			lst.push_back(Point<double>( x, 0, mz + iter));
 			this->_map.push_back(lst);
 		}
 
@@ -111,11 +112,10 @@ Engine::setControlPoints(std::vector<Point<double> > & ctrl, int mx, int mz)
 void
 Engine::drawBezier2D(void)
 {
-	int								size;
-	std::vector<Point<double> >		tab;
-	std::vector<Point<double> >		tab2;
-	std::vector<Point<double> >		tab3;
-
+	int						size;
+	std::vector<Point<double> >			tab;
+	std::vector<Point<double> >			tab2;
+	std::vector<Point<double> >			tab3;
 	std::vector<std::vector<Point<double>> >	grid;
 
 	std::cout << "Drawing Bezier" << std::endl;
@@ -146,8 +146,8 @@ Engine::drawBezier2D(void)
 		std::cout << "map size : " << size << std::endl;
 		for (int i = 0; i < size; ++i)
 		{
-			std::vector<Point<double> >		t;
-			int								s;
+			std::vector<Point<double> >	t;
+			int				s;
 
 			this->_b2D.clearAprox();
 			this->_b2D.compute(this->_map[i]);
@@ -177,8 +177,8 @@ Engine::drawBezier2D(void)
 	std::cout << "tab  : " << tab_size << std::endl;
 	std::cout << "grid : " << grid_size << std::endl;
 
-	std::vector<glm::vec3>					tmp;
-	std::vector<Point<double> >				temp;
+	std::vector<glm::vec3>		tmp;
+	std::vector<Point<double> >	temp;
 
 	for (int i = 0; i < tab_size; ++i)
 	{
@@ -213,34 +213,27 @@ Engine::setBorderMap(void)
 	std::vector<glm::vec3>	tmp;
 
 	std::cout << "Drawing Border" << std::endl;
-	for(int i = -BORD + 1; i <= 0; ++i)
-	{
-		for(int j = -BORD; j < SIZE_MAP + BORD; j++)
-			tmp.push_back(glm::vec3(j, 0, i));
-	}
-	drawLand(tmp, BORD, SIZE_MAP + 2 * BORD, 0, 0.392157, 0);
-	tmp.clear();
-	for(int i = SIZE_MAP; i < SIZE_MAP + BORD; ++i)
-	{
-		for(int j = -BORD; j < SIZE_MAP + BORD; j++)
-			tmp.push_back(glm::vec3(j, 0, i));
-	}
-	drawLand(tmp, BORD, SIZE_MAP + 2 * BORD, 0, 0.392157, 0);
-	tmp.clear();
-	for(int i = 0; i < SIZE_MAP + 1; ++i)
-	{
-		for(int j = -BORD; j <= 0; j++)
-			tmp.push_back(glm::vec3(j, 0, i));
-	}
-	drawLand(tmp, SIZE_MAP + 1, BORD + 1, 0, 0.392157, 0);
-	tmp.clear();
-	for(int i = 0; i < SIZE_MAP + 1; ++i)
-	{
-		for(int j = SIZE_MAP; j < SIZE_MAP + BORD; j++)
-			tmp.push_back(glm::vec3(j, 0, i));
-	}
-	drawLand(tmp, SIZE_MAP + 1, BORD , 0, 0.392157, 0);
+	drawRectanglePlan(   -BORD,    -BORD,            BORD, SIZE_MAP + BORD);
+	drawRectanglePlan(SIZE_MAP,        0,            BORD, SIZE_MAP + BORD);
+	drawRectanglePlan(       0,    -BORD, SIZE_MAP + BORD, BORD);
+	drawRectanglePlan(   -BORD, SIZE_MAP, SIZE_MAP + BORD, BORD);
 }
+
+void
+Engine::drawRectanglePlan(int x, int z, int h, int w)
+{
+	this->_vertice.push_back(glm::vec3(    x, 0,     z));
+	this->_vertice.push_back(glm::vec3(x + h, 0,     z));
+	this->_vertice.push_back(glm::vec3(    x, 0, z + w));
+
+	this->_vertice.push_back(glm::vec3(x + h, 0,     z));
+	this->_vertice.push_back(glm::vec3(x + h, 0, z + w));
+	this->_vertice.push_back(glm::vec3(    x, 0, z + w));
+
+	for (int j = 0 ; j < 6; ++j)
+		this->_colors.push_back(glm::vec3(0, 0.392157, 0));
+}
+
 
 void
 Engine::drawSquarePlan(int x, int z, int size)

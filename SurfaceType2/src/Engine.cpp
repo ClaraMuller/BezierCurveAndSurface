@@ -44,7 +44,7 @@ Engine::~Engine(void)
 }
 
 bool
-Engine::init(int w, int h, int mode)
+Engine::init(int mode, int w, int h)
 {
 	this->_w = w;
 	this->_h = h;

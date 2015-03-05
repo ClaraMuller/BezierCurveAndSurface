@@ -29,7 +29,7 @@ private:
 
 	float		_fov;
 	Bezier2D	_b2D;
-	int			_drawingMode;
+	int		_drawingMode;
 
 	std::vector<glm::vec3>		_vertice;
 	std::vector<glm::vec3>		_colors;
@@ -39,7 +39,7 @@ private:
 	std::vector<Point<double>>	_testPoints2;
 	std::vector<Point<double>>	_testPoints3;
 
-	std::vector< std::vector< Point<double> > >		_map;
+	std::vector< std::vector< Point<double> > >	_map;
 
 	Engine(const Engine& o);
 	Engine&	operator=(const Engine& o);
@@ -71,7 +71,7 @@ public:
 	Engine(void);
 	virtual ~Engine(void);
 
-	bool	init(int w = 1900, int h = 1200, int mode = SIMPLE);
+	bool	init(int mode, int w = 1900, int h = 1200);
 	void	launch(Scene & sc);
 
 	/* EngineMap.cpp */
@@ -80,6 +80,7 @@ public:
 	void	drawBezier2D(void);
 	void	setControlPoints(std::vector<Point<double> > & p, int minx, int minz);
 	void	setBorderMap(void);
+	void	drawRectanglePlan(int x, int z, int h, int w);
 	void	drawSquarePlan(int x, int z, int size);
 	void	drawLand(std::vector<glm::vec3> & pts, int square);
 	void	drawLand(std::vector<glm::vec3> & pts, int square, float r, float g, float b);
@@ -87,9 +88,9 @@ public:
 
 	/* EngineGetterSetter.cpp  */
 
-	int		getCamX(void) const;
-	int		getCamY(void) const;
-	int		getCamZ(void) const;
+	int	getCamX(void) const;
+	int	getCamY(void) const;
+	int	getCamZ(void) const;
 	void	setCamX(int param);
 	void	setCamY(int param);
 	void	setCamZ(int param);
@@ -105,11 +106,11 @@ public:
 
 	/* EngineStatic.cpp  */
 
-	static void		error_callback(int error, const char* description);
-	static void		key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
-	static void		cursor_pos_callback(GLFWwindow* window, double xpos, double ypos);
+	static void	error_callback(int error, const char* description);
+	static void	key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
+	static void	cursor_pos_callback(GLFWwindow* window, double xpos, double ypos);
 
-	static glm::vec3		pointToVec3(const Point<double> & p);
+	static glm::vec3	pointToVec3(const Point<double> & p);
 	static Point<double>	vec3ToPoint(const glm::vec3 & v);
 
 };

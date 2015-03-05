@@ -14,8 +14,7 @@ private:
 	float		_maxx;
 	float		_maxy;
 	float		_maxz;
-	Bezier2D	_b2D;
-	int			_sizeMap;
+	int		_sizeMap;
 
 
 public:
@@ -35,8 +34,6 @@ public:
 	bool	setPts(const char *path_file);
 	void	setMinXYZ(void);
 	void	setMaxXYZ(void);
-	void	setExtremeControlPoint(void);
-	void	setScalePts(void);
 
 	float	getMinX(void) const;
 	float	getMinY(void) const;
@@ -45,12 +42,6 @@ public:
 	float	getMaxY(void) const;
 	float	getMaxZ(void) const;
 
-	int								getBezierIter(void) const;
-	std::vector<Point<double>> &	getBezierAprox(void);
-	void							clearBezierAprox(void);
-
-	void	computeBezier2D(void);
-	void	computeBezier2D(std::vector<Point<double>> & pts);
 };
 
 #endif
